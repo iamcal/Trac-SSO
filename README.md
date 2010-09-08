@@ -5,6 +5,9 @@ Single Sign-on (SSO) support for Trac.
 This plugin is set up to use <a href="http://github.com/exflickr/GodAuth">GodAuth</a>,
 but can easily be modified to use other SSO systems.
 
+This plugin has been tested with Trac 0.12, but should work with 0.11 too.
+It will not work with older versions of Trac that use ClearSilver instead of Genshi.
+
 
 Installation
 ------------
@@ -26,5 +29,9 @@ which can be found at <code>conf/trac.ini</code> inside your trac install. Add t
     godauth.* = enabled
 
 If your config file already has a <code>[components]</code> section, just append those 2 lines to it.
+
+The permissions model is not yet ported over to use SSO roles, so you'll need to set up admins using <code>trac-admin</code>:
+
+    trac-admin /path/to/trac/install  permission add {your-sso-username-here} TRAC_ADMIN
 
 Finally, restart your webserver. That should be it.
